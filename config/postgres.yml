@@ -1,0 +1,6 @@
+host: 192.168.0.200
+port: 5432
+database: datalake
+user: postgres
+password: secret123
+schema: public

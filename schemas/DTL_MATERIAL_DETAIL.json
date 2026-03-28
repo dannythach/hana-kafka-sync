@@ -1,0 +1,104 @@
+{
+  "type": "struct",
+  "name": "DTL_MATERIAL_DETAIL",
+  "optional": false,
+  "fields": [
+    {
+      "field": "docentry",
+      "type": "int64",
+      "optional": false
+    },
+    {
+      "field": "docnum",
+      "type": "int64",
+      "optional": false
+    },
+    {
+      "field": "groupno",
+      "type": "int64",
+      "optional": false
+    },
+    {
+      "field": "itmsgrpnam",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "materialcode",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "materialname",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "onhand",
+      "type": "double",
+      "optional": true
+    },
+    {
+      "field": "materialqty",
+      "type": "double",
+      "optional": true
+    },
+    {
+      "field": "actualqty",
+      "type": "double",
+      "optional": true
+    },
+    {
+      "field": "remark",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "uomentry",
+      "type": "int64",
+      "optional": false
+    },
+    {
+      "field": "uomname",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "fromwhs",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "towhs",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "createdate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    },
+    {
+      "field": "createts",
+      "type": "int32",
+      "optional": true
+    },
+    {
+      "field": "fromts",
+      "type": "int32",
+      "optional": true
+    },
+    {
+      "field": "tots",
+      "type": "int32",
+      "optional": true
+    },
+    {
+      "field": "updatedate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+tables:
+# ===============================
+# HANA → POSTGRES
+# ===============================
+  - name: oitm
+    direction: hana_to_pg
+    schema: DTL_OITM
+    topic: bi_hana_dtl_oitm
+    pk: itemcode
+    updated_column: updatedate
+    state_file: state/dtl_oitm.state
+    sql: |
+      SELECT "ID",
+        "itemcode",
+        "itemname",
+        "frgnname",
+        "itmsgrpcod",
+        "puomcode",
+        "suomcode",
+        "iuomcode",
+        "createdate",
+        "updatedate",
+        "updatets"
+      FROM COMI_GOLIVE.DTL_OITM
+      WHERE "updatedate" > ?
+        and ifnull("itemcode", '') <> ''
+      ORDER BY "updatedate"
+  - name: ouom
+    direction: hana_to_pg
+    schema: DTL_OUOM
+    topic: bi_hana_dtl_ouom
+    pk: uomcode
+    updated_column: updatedate
+    state_file: state/dtl_ouom.state
+    sql: |
+      SELECT 
+        "uomcode",
+        "uomname",
+        "locked",
+        "createdate",
+        "updatedate",
+        "u_uomcode"
+      FROM COMI_GOLIVE.DTL_OUOM
+      WHERE "updatedate" > ?
+        and ifnull("uomcode", '') <> ''
+      ORDER BY "updatedate"
+  - name: material_detail
+    direction: hana_to_pg
+    schema: DTL_MATERIAL_DETAIL
+    topic: bi_hana_dtl_material_detail
+    pk: docentry
+    updated_column: updatedate
+    state_file: state/dtl_material_detail.state
+    sql: |
+      SELECT 
+        "docentry",
+        "docnum",
+        "groupno",
+        "itmsgrpnam",
+        "materialcode",
+        "materialname",
+        "onhand",
+        "materialqty",
+        "actualqty",
+        "remark",
+        "uomentry",
+        "uomname",
+        "fromwhs",
+        "towhs",
+        "createdate",
+        "createts",
+        "fromts",
+        "tots",
+        "updatedate"
+      FROM "COMI_GOLIVE"."DTL_Material_Detail" 
+      WHERE "updatedate" > ?
+  - name: b1cs_daily_prod
+    direction: hana_to_pg
+    schema: DTL_B1CS_DAILY_PROD
+    topic: bi_hana_dtl_b1cs_daily_prod
+    pk: docentry
+    updated_column: updatedate
+    state_file: state/dtl_b1cs_daily_prod.state
+    sql: |
+      SELECT 
+        "docentry",
+        "docnum",
+        "canceled",
+        "status",
+        "createdate",
+        "createtime",
+        "updatedate",
+        "updatetime",
+        "remark",
+        "u_docdate",
+        "u_factory",
+        "u_fromwhs",
+        "u_towhs"
+      FROM "COMI_GOLIVE"."DTL_B1CS_DAILY_PROD" 
+      WHERE "updatedate" > ?
+  - name: b1cs_daily_prod_t1  
+    direction: hana_to_pg
+    schema: DTL_B1CS_DAILY_PROD_T1
+    topic: bi_hana_dtl_b1cs_daily_prod_t1
+    pk: proplanentry
+    updated_column: updatedate
+    state_file: state/dtl_b1cs_daily_prod_t1.state
+    sql: |
+      SELECT 
+        "proplanentry",
+        "docentry",
+        "lineid",
+        "u_itemcode",
+        "u_dscription",
+        "u_quantity",
+        "u_uom",
+        "u_factor",
+        "u_quantitypc",
+        "u_line",
+        "u_remarks",
+        "u_shift",
+        "u_oriline",
+        "u_btp",
+        "u_productiontype",
+        "u_machines",
+        "updatedate",
+        "u_fromts",
+        "u_tots"
+      FROM "COMI_GOLIVE"."DTL_B1CS_DAILY_PROD_T1" 
+      WHERE "updatedate" > ?
+# ===============================
+# POSTGRES → HANA
+# ===============================
+  - name: incident_log
+    direction: pg_to_hana
+    postgres_table: incident_log
+    topic: incident_log
+    pk: docentry
+    incrementing_column: docentry
+    timestamp_column: update_ts
+    schema: COMI_GOLIVE
+    target_table: "@COMI_INCIDENT_LOG"
+    batch_size: 1
+    column_map:
+      code: "Code"
+      docentry: "DocEntry"
+      canceled: "Canceled"
+      object: "Object"
+      loginst: "LogInst"
+      usersign: "UserSign"   
+      name: "Name"
+      transfered: "Transfered"
+      createdate: "CreateDate"
+      createtime: "CreateTime"
+      updatedate: "UpdateDate"
+      updatetime: "UpdateTime"
+      datasource: "DataSource"
+      u_docdate: "U_docdate"
+      u_factory: "U_factory"
+      u_proplan: "U_proplan"
+      u_line: "U_line"
+      u_shift: "U_shift"
+      u_from: "U_from"
+      u_to: "U_to"
+      u_status: "U_status"
+      u_solution: "U_solution"
+      u_userid: "U_userid"
+      u_username: "U_username"  
+      u_file: "U_file"
+      

@@ -1,0 +1,75 @@
+{
+  "type": "struct",
+  "name": "DTL_B1CS_DAILY_PROD",
+  "optional": false,
+  "fields": [
+    {
+      "field": "docentry",
+      "type": "int64",
+      "optional": false
+    },
+    {
+      "field": "docnum",
+      "type": "int64",
+      "optional": false
+    },
+    {
+      "field": "canceled",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "status",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "createdate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    },
+    {
+      "field": "createtime",
+      "type": "int32",
+      "optional": true
+    },
+    {
+      "field": "updatedate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    },
+    {
+      "field": "updatetime",
+      "type": "int32",
+      "optional": true
+    },
+    {
+      "field": "remark",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "u_docdate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    },
+    {
+      "field": "u_factory",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "u_fromwhs",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "u_towhs",
+      "type": "string",
+      "optional": true
+    }
+  ]
+}

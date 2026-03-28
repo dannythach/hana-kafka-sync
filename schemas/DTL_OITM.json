@@ -1,0 +1,64 @@
+{
+  "type": "struct",
+  "name": "DTL_OITM",
+  "optional": false,
+  "fields": [
+    {
+      "field": "id",
+      "type": "int64",
+      "optional": false
+    },
+    {
+      "field": "itemcode",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "itemname",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "frgnname",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "itmsgrpcod",
+      "type": "int16",
+      "optional": true
+    },
+    {
+      "field": "puomcode",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "suomcode",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "iuomcode",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "createdate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    },
+    {
+      "field": "updatedate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    },
+    {
+      "field": "updatets",
+      "type": "int32",
+      "optional": true
+    }
+  ]
+}

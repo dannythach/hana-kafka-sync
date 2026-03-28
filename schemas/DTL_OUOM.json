@@ -1,0 +1,39 @@
+{
+  "type": "struct",
+  "name": "DTL_OUOM",
+  "optional": false,
+  "fields": [
+    {
+      "field": "uomcode",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "uomname",
+      "type": "string",
+      "optional": false
+    },
+    {
+      "field": "locked",
+      "type": "string",
+      "optional": true
+    },
+    {
+      "field": "createdate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    },
+    {
+      "field": "updatedate",
+      "type": "int64",
+      "name": "org.apache.kafka.connect.data.Timestamp",
+      "optional": true
+    },
+    {
+      "field": "u_uomcode",
+      "type": "string",
+      "optional": false
+    }
+  ]
+}
