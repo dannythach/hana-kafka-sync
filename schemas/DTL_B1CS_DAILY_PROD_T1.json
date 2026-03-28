@@ -91,14 +91,12 @@
     },
     {
       "field": "u_fromts",
-      "type": "int64",
-      "name": "org.apache.kafka.connect.data.Timestamp",
+      "type": "int32",
       "optional": true
     },
     {
       "field": "u_tots",
-      "type": "int64",
-      "name": "org.apache.kafka.connect.data.Timestamp",
+      "type": "int32",
       "optional": true
     }
   ]
